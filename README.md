@@ -1,0 +1,1 @@
+# SmartFridge_FER_WEB2_Sixth_Project
