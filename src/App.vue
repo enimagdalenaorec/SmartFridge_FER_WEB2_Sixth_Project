@@ -1,22 +1,37 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <div class="app-container">
+    <header>
+      <h1>Smart Fridge 🧊</h1>
+    </header>
+    
+    <main class="content">
+      <FridgeForm @item-added="updateList" />
+      <FridgeList ref="fridgeList" />
+    </main>
+  </div>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script setup>
+import { ref } from 'vue';
+import FridgeForm from './components/FridgeForm.vue';
+import FridgeList from './components/FridgeList.vue';
+
+const fridgeList = ref(null);
+
+const updateList = () => {
+  fridgeList.value.refreshList();
+};
+</script>
+
+<style>
+/* Dodaj malo layouta */
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 40px;
+  align-items: start;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+@media (max-width: 800px) {
+  .content { grid-template-columns: 1fr; }
 }
 </style>
