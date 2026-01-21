@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+dev-dist
+
+.env.local
+.env.*.local
+
+.vscode/
+.idea/
