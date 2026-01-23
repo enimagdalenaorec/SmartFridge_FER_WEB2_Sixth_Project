@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  base: './',
   plugins: [
     vue(),
     VitePWA({
@@ -36,9 +37,6 @@ export default defineConfig({
       devOptions: {
         enabled: true,
         type: 'module' 
-      },
-      injectManifest: {
-        injectionPoint: undefined 
       }
     })
   ]

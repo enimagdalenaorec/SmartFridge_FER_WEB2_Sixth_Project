@@ -37,10 +37,12 @@ defineExpose({ refreshList });
   <div class="list-container">
     <div class="header">
       <h2>In My Fridge</h2>
-      <button @click="refreshList" class="btn-refresh-modern" title="Refresh List">
-        <span>🔄</span>
-      </button>
     </div>
+
+    <p class="guide-text">
+      Track your items easily! Add new products with photos, and track their expiry date! Remove any eaten or expired products.
+      <br>
+    </p>
 
     <div v-if="products.length === 0" class="empty-state shadow">
       <span class="empty-icon">❄️</span>
@@ -215,4 +217,24 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
+.guide-text {
+  color: #718096; 
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  max-width: 600px;
+}
+
+.guide-text small {
+  display: block;
+  margin-top: 5px;
+  color: #a0aec0;
+  font-style: italic;
+}
+
+.title {
+  margin-bottom: 10px; 
+}
+
 </style>
