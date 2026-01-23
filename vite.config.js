@@ -6,16 +6,20 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
-      devOptions: {
-        enabled: true  // ovo je da radi sa npm run dev
-      },
+      strategies: 'injectManifest',
+      srcDir: 'src',
+      filename: 'sw.js', 
+      
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'pwa-192x192.png', 'pwa-512x512.png'],
+      injectRegister: 'inline',
+      
       manifest: {
-        name: 'Smart Fridge',
+        name: 'Smart Fridge Tracker',
         short_name: 'Fridge',
         description: 'Track food and expiry dates',
-        theme_color: '#ffffff',
+        theme_color: '#3498db',
+        background_color: '#f4f7f9',
+        display: 'standalone', 
         icons: [
           {
             src: 'pwa-192x192.png',
@@ -28,6 +32,13 @@ export default defineConfig({
             type: 'image/png'
           }
         ]
+      },
+      devOptions: {
+        enabled: true,
+        type: 'module' 
+      },
+      injectManifest: {
+        injectionPoint: undefined 
       }
     })
   ]

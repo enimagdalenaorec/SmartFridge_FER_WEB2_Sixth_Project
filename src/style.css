@@ -1,24 +1,15 @@
 :root {
-  --primary: #42b983;
-  --bg: #f0f4f8;
-  --card-bg: #ffffff;
+  --primary: #3498db;
+  --primary-light: #ebf5ff;
+  --primary-dark: #2980b9;
+  --bg: #f4f7f9;
+  --text: #2c3e50;
 }
 
 body {
   margin: 0;
+  padding: 0;
   background-color: var(--bg);
-  font-family: 'Inter', sans-serif;
-  color: #2c3e50;
-}
-
-.app-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
-
-h1 {
-  font-weight: 800;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text);
 }

@@ -82,6 +82,13 @@ const saveItem = async () => {
 
   try {
     await addProduct(newItem);
+
+    if ('serviceWorker' in navigator && 'SyncManager' in window) {
+      const registration = await navigator.serviceWorker.ready;
+      await registration.sync.register('sync-new-items');
+      console.log("Sync registered!");
+    }
+
     showToast("✅ Saved to fridge!");
     
     emit('item-added');
@@ -155,7 +162,7 @@ input {
   font-size: 1rem;
   transition: border-color 0.2s;
 }
-input:focus { border-color: #42b983; outline: none; }
+input:focus { border-color: var(--primary); outline: none; }
 
 .camera-section {
   margin: 25px 0;
@@ -202,7 +209,7 @@ video, .preview-container img {
 .btn-save {
   width: 100%;
   padding: 16px;
-  background: #42b983;
+  background: var(--primary);
   color: white;
   border: none;
   border-radius: 14px;
