@@ -8,7 +8,7 @@ import { onMounted } from 'vue';
 onMounted(() => {
   if ('Notification' in window) {
     Notification.requestPermission().then(permission => {
-      console.log('Status obavijesti:', permission);
+      console.log('notif allowed:', permission);
     });
   }
 });
