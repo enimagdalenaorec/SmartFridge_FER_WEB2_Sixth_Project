@@ -3,6 +3,16 @@ import { ref } from 'vue';
 import FridgeForm from './components/FridgeForm.vue';
 import FridgeList from './components/FridgeList.vue';
 
+import { onMounted } from 'vue';
+
+onMounted(() => {
+  if ('Notification' in window) {
+    Notification.requestPermission().then(permission => {
+      console.log('Status obavijesti:', permission);
+    });
+  }
+});
+
 const activeTab = ref('list');
 const fridgeList = ref(null);
 

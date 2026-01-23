@@ -20,13 +20,20 @@ async function syncItems() {
     
     const unsyncedItems = allItems.filter(item => !item.synced);
 
-    for (const item of unsyncedItems) {
-      console.log('Sinkroniziram namirnicu:', item.name);
-      item.synced = true; 
-      await store.put(item);
+    if (unsyncedItems.length > 0) {
+      for (const item of unsyncedItems) {
+        item.synced = true;
+        await store.put(item);
+      }
+      await tx.done;
+
+      self.registration.showNotification('Fridge Cloud Sync', {
+        body: `Uspješno sinkronizirano namirnica: ${unsyncedItems.length}`,
+        icon: '/pwa-192x192.png', 
+        badge: '/pwa-192x192.png', 
+        vibrate: [200, 100, 200]   
+      });
     }
-    await tx.done;
-    console.log('Sinkronizacija uspješna!');
   } catch (err) {
     console.error('Sinkronizacija nije uspjela:', err);
   }
